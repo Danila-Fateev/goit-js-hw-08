@@ -7,7 +7,7 @@ const refs = {
     input: document.querySelector('input'),
     textarea: document.querySelector('textarea'),
 }
-const formData = {};
+let formData = {};
 const FEEDBACK_FORM_STATE = "feedback-form-state";
 const localStorageParsed = JSON.parse(localStorage.getItem(FEEDBACK_FORM_STATE))
 
@@ -28,8 +28,10 @@ function onInputValueChange(evt) {
 onPageLoading()
 
 function onPageLoading() {
-    if (FEEDBACK_FORM_STATE) {
+    if (localStorage.getItem(FEEDBACK_FORM_STATE)) {
         refs.input.value = localStorageParsed.email;
         refs.textarea.value = localStorageParsed.message;
+        formData = localStorageParsed;
     }
+    
 }
