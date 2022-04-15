@@ -19,6 +19,7 @@ function onSubmitBtnClick(event) {
     console.log({email: refs.input.value, message: refs.textarea.value});
     formEl.reset();
     localStorage.removeItem(FEEDBACK_FORM_STATE);
+    formData = {};
 }
 
 function onInputValueChange(evt) {
@@ -29,8 +30,8 @@ onPageLoading()
 
 function onPageLoading() {
     if (localStorage.getItem(FEEDBACK_FORM_STATE)) {
-        refs.input.value = localStorageParsed.email;
-        refs.textarea.value = localStorageParsed.message;
+        if (localStorageParsed.email) {refs.input.value = localStorageParsed.email; }
+        if(localStorageParsed.message) {refs.textarea.value = localStorageParsed.message;}
         formData = localStorageParsed;
     }
     
